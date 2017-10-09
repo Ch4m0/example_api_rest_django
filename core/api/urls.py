@@ -18,7 +18,8 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
+
 url(r'^hola_mundo_rest/', views.hola_mundo),
-url(r'^usuarios/(?P<id>\d+)/$', views.usuarios),
-url(r'^todos/(?P<id>\d+)/$', views.todos),
+url(r'^usuarios/(?P<id>\d+)/', views.usuarios),
+url(r'^todos/', views.todos),
  ]

@@ -38,8 +38,8 @@ usuarios = Usuario.as_view()
 class Todo(APIView): 
 
 	serializer_class = ToDoSerializer
-	def get(self, request, id=None, format=None):
 
+	def get(self, request, id=None, format=None): 
 		if(id != None):
 			tasks  = get_object_or_404(ToDo, pk = id) 
 			response =  self.serializer_class(tasks, many=False)
@@ -48,4 +48,12 @@ class Todo(APIView):
 			response =  self.serializer_class(tasks, many=True)
 
 		return Response(response.data)
+
+	def post(self, request, format=None):
+
+		todo  =  self.serializer_class(data = request.data)
+		
+		if todo.is_valid():
+			todo.save()
+
 todos = Todo.as_view()
